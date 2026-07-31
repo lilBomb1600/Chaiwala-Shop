@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fbf3e6;
+  --color-cream-dark: #f3e6cd;
+  --color-beige: #e9dbbf;
+  --color-espresso: #34211a;
+  --color-espresso-light: #5a3c2a;
+  --color-maroon: #8c2a24;
+  --color-maroon-dark: #6a1f1a;
+  --color-saffron: #c98a3a;
+  --color-saffron-light: #e0ab5c;
+  --color-pine: #253828;
+  --color-pine-dark: #182219;
+
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-inter);
+
+  --animate-fade-up: fade-up 0.7s ease-out forwards;
+  --animate-marquee: marquee 32s linear infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-espresso);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-saffron);
+  color: var(--color-espresso);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-maroon);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 100;
+  background: var(--color-cream);
+  color: var(--color-espresso);
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Glassmorphism helper used by the sticky nav and floating CTAs */
+.glass {
+  background: color-mix(in srgb, var(--color-cream) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+.glass-dark {
+  background: color-mix(in srgb, var(--color-espresso) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+/* Custom scrollbar, subtle and on-brand */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-beige);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-saffron);
+}
