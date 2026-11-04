@@ -1,12 +1,15 @@
+export const siteUrl = "https://www.chaiwalashop.com";
+
 export const business = {
   name: "Chaiwala Shop",
   shortName: "Chaiwala",
   tagline: "Experience Authentic Chai",
   established: 2025,
   description:
-    "A neighborhood chaiwala serving hand-brewed masala and kesari chai alongside Indian-street-inspired snacks, sandwiches, and Kullad-style comfort food — made fresh, served warm, every single day.",
+    "A neighborhood chaiwala on Salvio St in downtown Concord: ten chais, hot or iced, in a clay kullad if you like, with vegetarian desi street food.",
   phone: "(925) 465-6886",
   phoneHref: "tel:+19254656886",
+  // CONFIRM: not on any of the shop's boards or listings; kept in data, not shown on the page
   email: "hello@chaiwalashop.com",
   address: {
     line1: "2008 Salvio St",
@@ -14,10 +17,11 @@ export const business = {
     full: "2008 Salvio St, Concord, CA 94520",
   },
   mapsHref: "https://www.google.com/maps/search/?api=1&query=2008+Salvio+St+Concord+CA+94520",
-  mapsEmbedSrc:
-    "https://maps.google.com/maps?q=2008%20Salvio%20St%2C%20Concord%2C%20CA%2094520&output=embed",
+  directionsHref:
+    "https://www.google.com/maps/dir/?api=1&destination=Chaiwala+Shop%2C+2008+Salvio+St%2C+Concord%2C+CA+94520",
   priceRange: "$10–$20 per person",
   serviceOptions: ["Vegetarian options", "Kids' menu", "Dine-in", "Takeout"],
+  /** Google listing hours, Monday first. Times are Concord local (America/Los_Angeles). */
   hours: [
     { day: "Monday", hours: "10:00 AM – 9:00 PM" },
     { day: "Tuesday", hours: "10:00 AM – 9:00 PM" },
@@ -28,12 +32,8 @@ export const business = {
     { day: "Sunday", hours: "10:00 AM – 9:00 PM" },
   ],
   social: {
+    // CONFIRM: handles carried over from the first build; not verified against the shop's accounts
     instagram: "https://instagram.com/chaiwalashop",
     facebook: "https://facebook.com/chaiwalashop",
-    yelp: "https://www.yelp.com",
   },
 } as const;
-
-export function getTodayHoursLabel(): { day: string; hours: string; isToday: boolean }[] {
-  return business.hours.map((h) => ({ ...h, isToday: false }));
-}

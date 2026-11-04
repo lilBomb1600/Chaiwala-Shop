@@ -1,143 +1,210 @@
-export type MenuItem = {
+/*
+ * The menu, as it reads on the two screens over the Concord counter (the shop's own Google photos gm91 = drinks,
+ * gm94 = food; both screens are visible in the room photo gm22). The food prices match the copy of the same board on
+ * Yelp that the first version of this site used. Item notes come from the shop's Yelp reviews, never invented.
+ * Anything new from the boards is listed in CONFIRM.md.
+ */
+
+/** taste filters; every tag is true by the item's name or by its board (temperature, size, price) */
+export type Tag = "cold" | "hot" | "sweet" | "spice" | "under7";
+
+export type Item = {
   name: string;
-  description?: string;
+  /** a second word for it: the Hindi name, or what it is */
+  aka?: string;
+  /** single price, or the regular price when the board lists regular / large */
   price?: number;
+  large?: number;
+  /** shown instead of a price */
   priceNote?: string;
-  popular?: boolean;
-  vegetarian?: boolean;
-  /** id from data/gallery.ts, when a real matching photo exists */
-  imageId?: string;
+  note?: string;
+  tags: Tag[];
 };
 
-export type MenuCategory = {
+export type Board = {
   id: string;
   title: string;
-  subtitle?: string;
-  items: MenuItem[];
+  /** the line under the board title, as printed: sizes, temperature */
+  spec?: string;
+  /** one price for every item on the board */
+  price?: { regular: number; large?: number };
+  items: Item[];
+  /** a real line from a review, printed at the foot of the board */
+  quote?: { text: string; who: string };
+  footnote?: string;
 };
 
-// Transcribed from the in-store menu board. A few items were cropped out of
-// frame — those are marked with priceNote "Ask in-store" instead of a guessed
-// price. Send the full list any time to fill these in.
-export const menu: MenuCategory[] = [
+const both: Tag[] = ["hot", "cold"];
+
+export const boards: Board[] = [
   {
     id: "chai",
-    title: "Chai & Beverages",
-    subtitle: "The reason we opened the door",
+    title: "Chai",
+    spec: "Hot or iced · Regular / Large",
+    price: { regular: 4.5, large: 6.5 },
     items: [
-      {
-        name: "Masala Chai",
-        description: "Hand-brewed, mildly sweetened with a spoon of sugar by default — ask for less, or add your own.",
-        popular: true,
-        priceNote: "Ask in-store",
-        imageId: "hot-chai-cup",
-      },
-      {
-        name: "Kesari Chai",
-        description: "Our saffron-spiced house specialty — the one regulars keep coming back for.",
-        popular: true,
-        priceNote: "Ask in-store",
-        imageId: "kesari-chai-pour",
-      },
-      {
-        name: "Rose Chai",
-        description: "Served hot in a traditional clay cup, with a delicate floral note.",
-        priceNote: "Ask in-store",
-      },
-      {
-        name: "Paan Chai",
-        description: "A house favorite with a subtle, floral paan flavor.",
-        priceNote: "Ask in-store",
-      },
-      {
-        name: "Saffron Iced Tea",
-        description: "Our saffron chai, served cold and refreshing.",
-        priceNote: "Ask in-store",
-      },
-      {
-        name: "Jaljeera",
-        description: "A spicy, savory cold broth with a crunchy fried topping.",
-        priceNote: "Ask in-store",
-      },
-      {
-        name: "Cucumber Mint Refresher",
-        description: "Cool and light, made with fresh mint and cucumber.",
-        priceNote: "Ask in-store",
-      },
-      {
-        name: "Mojito",
-        description: "A refreshing, non-alcoholic house mojito.",
-        priceNote: "Ask in-store",
-      },
-      {
-        name: "Chai Biscuits",
-        description: "The classic dunking companion, made to pair with any chai.",
-        priceNote: "Ask in-store",
-        imageId: "chai-biscuits",
-      },
+      { name: "Ginger", aka: "adrak", tags: [...both, "under7"] },
+      { name: "Cardamom", aka: "elaichi", tags: [...both, "under7"] },
+      { name: "Kadak", aka: "strong", tags: [...both, "under7"] },
+      { name: "Masala", aka: "spiced", tags: [...both, "spice", "under7"] },
+      { name: "Tulsi", aka: "holy basil", tags: [...both, "under7"] },
+      { name: "Saffron", aka: "kesari", tags: [...both, "under7"] },
+      { name: "Chocolate", tags: [...both, "sweet", "under7"] },
+      { name: "Fennel", aka: "saunf", tags: [...both, "under7"] },
+      { name: "Paan", aka: "betel leaf", tags: [...both, "under7"] },
+      { name: "Rose", aka: "gulab", tags: [...both, "under7"] },
+    ],
+    footnote: "Made with 2% milk and one spoon of sugar. Kullad (clay cup) $1. Soy, almond or oat milk $1.",
+    quote: { text: "Love the kesari chai, hits the spot!", who: "Abha S." },
+  },
+  {
+    id: "refreshers",
+    title: "Refreshers",
+    spec: "16 oz",
+    price: { regular: 6 },
+    items: [
+      { name: "Mojito", note: "No alcohol.", tags: ["cold", "under7"] },
+      { name: "Zaffrani Iced Tea", aka: "saffron", tags: ["cold", "under7"] },
+      { name: "Kala Khatta", tags: ["cold", "under7"] },
+      { name: "Crunchy Jaljeera", note: "Spicy and savory, with a crunchy topping.", tags: ["cold", "spice", "under7"] },
+      { name: "Cucumber Mint", tags: ["cold", "under7"] },
+      { name: "Masala Lemonade", tags: ["cold", "spice", "under7"] },
+      { name: "Blue Ocean", tags: ["cold", "under7"] },
+    ],
+  },
+  {
+    id: "coffee",
+    title: "Coffee",
+    spec: "Regular / Large",
+    items: [
+      { name: "Cappuccino", price: 5, large: 7, tags: ["hot", "under7"] },
+      { name: "Filter Coffee", aka: "South Indian", price: 5, large: 7, tags: ["hot", "under7"] },
+      { name: "Hot Chocolate", price: 5, large: 7, tags: ["hot", "sweet", "under7"] },
+      { name: "Iced Filter Coffee", price: 6.5, tags: ["cold", "under7"] },
+      { name: "Cold Coffee", price: 6.5, tags: ["cold", "under7"] },
+      { name: "Brownie Cold Coffee", price: 8, tags: ["cold", "sweet"] },
+    ],
+  },
+  {
+    id: "milk",
+    title: "Milk",
+    spec: "Hot or iced · Regular / Large",
+    items: [
+      { name: "Badam Masala", aka: "almond", price: 6, large: 8, tags: [...both, "spice", "under7"] },
+      { name: "Cardamom Milk", price: 5, large: 7, tags: [...both, "under7"] },
+      { name: "Pink Milk", price: 6, tags: ["under7"] },
+    ],
+  },
+  {
+    id: "juice",
+    title: "Fresh juice",
+    spec: "12 oz",
+    price: { regular: 7 },
+    items: [
+      { name: "Carrot", tags: ["cold"] },
+      { name: "Orange", tags: ["cold"] },
+      { name: "Mixed Fruit", tags: ["cold"] },
+    ],
+  },
+  {
+    id: "shakes",
+    title: "Shakes",
+    spec: "16 oz",
+    price: { regular: 7 },
+    items: [
+      { name: "Butterscotch", tags: ["cold", "sweet"] },
+      { name: "Rose Faluda", tags: ["cold", "sweet"] },
+      { name: "Caramel Cookie Delight", tags: ["cold", "sweet"] },
+      { name: "Alphonso Mango", tags: ["cold", "sweet"] },
+      { name: "Strawberry", tags: ["cold", "sweet"] },
     ],
   },
   {
     id: "maggi",
     title: "Maggi",
-    subtitle: "Comfort noodles, the way you remember them",
     items: [
-      { name: "Masala Maggi", price: 7, vegetarian: true },
-      { name: "Veggie Masala", price: 10, vegetarian: true },
-      { name: "Cheese Veggie Masala", price: 11, vegetarian: true, popular: true },
-      { name: "Paneer Masala", price: 12, vegetarian: true, popular: true },
+      { name: "Masala Maggi", price: 7, tags: ["spice"] },
+      { name: "Veggie Masala", price: 10, tags: ["spice"] },
+      { name: "Cheese Veggie Masala", price: 11, tags: ["spice"] },
+      { name: "Paneer Masala", price: 12, tags: ["spice"] },
+    ],
+    quote: { text: "It really takes you back to childhood!", who: "Abha S." },
+  },
+  {
+    id: "snacks",
+    title: "Snacks & buns",
+    items: [
+      { name: "Bun Maska", aka: "hot, with butter", price: 5, tags: ["under7"] },
+      { name: "Cheese Chutney Bun", price: 5, tags: ["under7"] },
+      { name: "Nutella Bun", price: 5, tags: ["sweet", "under7"] },
+      { name: "Corn Masala", price: 6, tags: ["spice", "under7"] },
+      { name: "Peri Peri Fries", price: 7, tags: ["spice"] },
+      { name: "Chai Biscuits", priceNote: "Ask", note: "For dunking.", tags: ["sweet"] },
     ],
   },
   {
     id: "sandwiches",
     title: "Sandwiches",
-    subtitle: "Grilled to order",
     items: [
-      { name: "Veggie Coleslaw", price: 11, vegetarian: true, imageId: "veggie-sandwich-stack" },
-      { name: "Mumbai Veggie", price: 12, vegetarian: true },
-      { name: "Tandoori Paneer", price: 13, vegetarian: true, popular: true, imageId: "tandoori-paneer-sandwich" },
-    ],
-  },
-  {
-    id: "pasta",
-    title: "Pasta",
-    items: [{ name: "White Sauce Pasta", price: 12, vegetarian: true }],
-  },
-  {
-    id: "snacks",
-    title: "Snacks & Buns",
-    items: [
-      { name: "Cheese Chutney Bun", price: 5, vegetarian: true },
-      { name: "Nutella Bun", price: 6, vegetarian: true },
-      { name: "Corn Masala", price: 6, vegetarian: true, imageId: "corn-masala" },
-      { name: "Peri Peri Fries", price: 7, vegetarian: true, popular: true, imageId: "peri-peri-fries" },
+      { name: "Veggie Coleslaw", price: 11, tags: [] },
+      { name: "Mumbai Veggie", price: 12, tags: [] },
+      { name: "Tandoori Paneer", price: 13, tags: ["spice"] },
     ],
   },
   {
     id: "pizza",
     title: "Pizza",
     items: [
-      { name: "Cheese Pizza", priceNote: "Ask in-store", vegetarian: true },
-      { name: "Farmers Market", price: 11, vegetarian: true, imageId: "farmers-market-pizza" },
-      { name: "Paneer Veggie", price: 12, vegetarian: true },
+      { name: "Cheese Pizza", price: 10, tags: [] },
+      { name: "Farmers Market", price: 11, tags: [] },
+      { name: "Paneer Veggie", price: 12, tags: [] },
     ],
   },
   {
     id: "kullad-pizza",
-    title: "Kullad Pizza",
-    subtitle: "Served in a traditional clay kullad",
+    title: "Kullad pizza",
+    spec: "Served in a clay kullad",
     items: [
-      { name: "Kullad Veggie", price: 7, vegetarian: true },
-      { name: "Kullad Paneer", price: 8, vegetarian: true, popular: true, imageId: "kullad-paneer" },
+      { name: "Kullad Veggie", price: 7, tags: [] },
+      { name: "Kullad Paneer", price: 8, tags: [] },
     ],
+  },
+  {
+    id: "pasta",
+    title: "Pasta",
+    items: [{ name: "White Sauce Pasta", price: 12, tags: [] }],
   },
   {
     id: "burgers",
     title: "Burgers",
-    subtitle: "Add cheese for $1",
+    spec: "Add cheese $1",
     items: [
-      { name: "Veggie", price: 10, vegetarian: true, popular: true },
-      { name: "Chef's Special", priceNote: "Ask in-store", vegetarian: true },
+      { name: "Veggie", price: 10, tags: [] },
+      { name: "Peri Peri Veggie", price: 11, tags: ["spice"] },
+      { name: "Tandoori Veggie", price: 11, tags: ["spice"] },
     ],
+    quote: { text: "#1 the BEST!", who: "Sandra N., on the veggie burger" },
   },
 ];
+
+export const filters: { id: Tag | "all"; label: string }[] = [
+  { id: "all", label: "Everything" },
+  { id: "cold", label: "Cold" },
+  { id: "hot", label: "Hot drinks" },
+  { id: "sweet", label: "Sweet" },
+  { id: "spice", label: "Masala & spice" },
+  { id: "under7", label: "Under $7" },
+];
+
+export function money(n: number) {
+  return `$${n % 1 === 0 ? n : n.toFixed(2)}`;
+}
+
+/** "$4.50 / $6.50", "$6", "$5 / $7" */
+export function priceLabel(regular?: number, large?: number) {
+  if (regular == null) return "";
+  const f = (n: number) => (n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`);
+  return large != null ? `${f(regular)} / ${f(large)}` : f(regular);
+}
+
+export const itemCount = boards.reduce((n, b) => n + b.items.length, 0);

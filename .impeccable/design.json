@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T04:16:51.346409+00:00",
+  "title": "Design System: Chaiwala Shop",
+  "extensions": {
+    "colorMeta": {
+      "maroon": {
+        "role": "primary",
+        "displayName": "Chaiwala Maroon",
+        "canonical": "oklch(42.3% 0.150 23.7)",
+        "tonalRamp": [
+          "#340000",
+          "#580000",
+          "#7c0013",
+          "#a12f32",
+          "#ca5553",
+          "#f47b76",
+          "#ffa19b",
+          "#ffc5be"
+        ]
+      },
+      "maroon-hi": {
+        "role": "primary",
+        "displayName": "Maroon, lifted",
+        "canonical": "oklch(47.2% 0.163 23.1)",
+        "tonalRamp": [
+          "#370000",
+          "#5b0000",
+          "#80000f",
+          "#a6272e",
+          "#cf4f50",
+          "#fa7673",
+          "#ff9c98",
+          "#ffc1bb"
+        ]
+      },
+      "maroon-deep": {
+        "role": "primary",
+        "displayName": "Maroon, pressed",
+        "canonical": "oklch(31.7% 0.110 22.5)",
+        "tonalRamp": [
+          "#2b0000",
+          "#4c0008",
+          "#6e2123",
+          "#914140",
+          "#b96461",
+          "#e18885",
+          "#ffaeaa",
+          "#ffd1cd"
+        ]
+      },
+      "maroon-ink": {
+        "role": "primary",
+        "displayName": "Maroon Ink",
+        "canonical": "oklch(23.2% 0.077 21.5)",
+        "tonalRamp": [
+          "#230000",
+          "#421012",
+          "#622d2d",
+          "#844b4a",
+          "#aa6e6c",
+          "#d1928f",
+          "#f9b7b4",
+          "#ffdbd8"
+        ]
+      },
+      "turmeric": {
+        "role": "secondary",
+        "displayName": "Turmeric",
+        "canonical": "oklch(80.5% 0.159 80.2)",
+        "tonalRamp": [
+          "#280000",
+          "#480b00",
+          "#692e00",
+          "#8a4e00",
+          "#b07200",
+          "#d89700",
+          "#ffbd36",
+          "#ffe263"
+        ]
+      },
+      "turmeric-deep": {
+        "role": "secondary",
+        "displayName": "Turmeric, pressed",
+        "canonical": "oklch(68.0% 0.140 75.9)",
+        "tonalRamp": [
+          "#270000",
+          "#470e00",
+          "#682e00",
+          "#894e00",
+          "#af7200",
+          "#d69726",
+          "#ffbd55",
+          "#ffe17b"
+        ]
+      },
+      "tea": {
+        "role": "neutral",
+        "displayName": "Tea-Black",
+        "canonical": "oklch(17.7% 0.023 29.1)",
+        "tonalRamp": [
+          "#140706",
+          "#2e201e",
+          "#4b3b39",
+          "#6a5956",
+          "#8e7b78",
+          "#b3a09c",
+          "#d9c5c2",
+          "#fee9e6"
+        ]
+      },
+      "tea-2": {
+        "role": "neutral",
+        "displayName": "Tea Board",
+        "canonical": "oklch(21.2% 0.033 32.7)",
+        "tonalRamp": [
+          "#170604",
+          "#321e1a",
+          "#503a35",
+          "#6f5752",
+          "#937a74",
+          "#b89e98",
+          "#dfc3bd",
+          "#ffe7e1"
+        ]
+      },
+      "enamel": {
+        "role": "neutral",
+        "displayName": "Enamel",
+        "canonical": "oklch(97.7% 0.019 75.3)",
+        "tonalRamp": [
+          "#100a04",
+          "#29231a",
+          "#463f35",
+          "#645c52",
+          "#877f74",
+          "#aca398",
+          "#d2c9be",
+          "#f6ede1"
+        ]
+      },
+      "clay": {
+        "role": "tertiary",
+        "displayName": "Kullad Clay",
+        "canonical": "oklch(56.7% 0.133 42.9)",
+        "tonalRamp": [
+          "#2f0000",
+          "#520000",
+          "#741c00",
+          "#983e10",
+          "#c06239",
+          "#e9875e",
+          "#ffad83",
+          "#ffd1a6"
+        ]
+      },
+      "leaf": {
+        "role": "tertiary",
+        "displayName": "Veg Green",
+        "canonical": "oklch(56.4% 0.143 146.4)",
+        "tonalRamp": [
+          "#001600",
+          "#003300",
+          "#005100",
+          "#057225",
+          "#3b9649",
+          "#62bc6d",
+          "#89e392",
+          "#adffb5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "Take a chai break. only."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section and page headings, sentences with a period, always with the painted shade."
+      },
+      "rate": {
+        "displayName": "Rate",
+        "purpose": "Item names, prices, plates and options: condensed caps, tabular numbers."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Board specs, legends and counts; never above a heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "One plain line under each heading, reviews, notes."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hung-board",
+        "value": "0 2px 4px rgb(12 3 2 / 0.35), 0 22px 44px -14px rgb(12 3 2 / 0.6)",
+        "purpose": "Every board: a hung object's cast shadow."
+      },
+      {
+        "name": "plate",
+        "value": "inset 0 0 0 1.5px var(--pkey), inset 0 -3px 0 rgb(0 0 0 / 0.18), 0 6px 14px -6px rgb(12 3 2 / 0.55)",
+        "purpose": "Buttons at rest, pressable."
+      },
+      {
+        "name": "letter-shade",
+        "value": "text-shadow: 0.045em 0.055em 0 var(--shade)",
+        "purpose": "The sign painter's shade on Shrikhand only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Plates, rolling prices, sheet wipes, photo light-up."
+      },
+      {
+        "name": "hang",
+        "value": "spring stiffness 90 damping 6, rotate ±2.4deg to 0 from a top pivot",
+        "purpose": "Boards, prints and chits entering view."
+      },
+      {
+        "name": "board-swing",
+        "value": "scroll velocity to ±3.2deg, spring stiffness 52 damping 4.5",
+        "purpose": "The opening board; the open tag uses stiffness 95 damping 3.5."
+      },
+      {
+        "name": "pour",
+        "value": "kettle tilt 26deg 0.34s, stream 0.26s, fill 0.8s, two ripples, tail drop 0.3s",
+        "purpose": "Every change in the chai builder."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "max",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Plate",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action that matters on a section: Make my chai, Call, Directions.",
+      "html": "<button class=\"ds-plate\">Make my chai</button>",
+      "css": ".ds-plate{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3rem;padding:.7rem 1.35rem;border:0;border-radius:12px;background:var(--turmeric,#f4b223);color:var(--maroon-ink,#3a080c);font-family:'Anek Latin',Arial,sans-serif;font-stretch:75%;font-weight:800;font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(142,27,34,.55),inset 0 -3px 0 rgba(0,0,0,.18),0 6px 14px -6px rgba(12,3,2,.55);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}.ds-plate::before{content:'';position:absolute;inset:4px;border-radius:8px;border:1.5px solid rgba(142,27,34,.55);pointer-events:none}.ds-plate:hover{transform:translateY(-2px)}.ds-plate:active{transform:translateY(1px)}.ds-plate:focus-visible{outline:3px solid #f4b223;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Plate",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The second action on a dark or maroon field.",
+      "html": "<button class=\"ds-plate-ghost\">(925) 465-6886</button>",
+      "css": ".ds-plate-ghost{position:relative;display:inline-flex;align-items:center;min-height:3rem;padding:.7rem 1.35rem;border:0;border-radius:12px;background:transparent;color:#fff6ea;font-family:'Anek Latin',Arial,sans-serif;font-stretch:75%;font-weight:800;font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,246,234,.7);transition:transform .25s cubic-bezier(.16,1,.3,1),background-color .2s}.ds-plate-ghost::before{content:'';position:absolute;inset:4px;border-radius:8px;border:1.5px solid rgba(255,246,234,.7);pointer-events:none}.ds-plate-ghost:hover{background:rgba(255,246,234,.1);transform:translateY(-2px)}.ds-plate-ghost:focus-visible{outline:3px solid #f4b223;outline-offset:3px}"
+    },
+    {
+      "name": "Option Plate",
+      "kind": "chip",
+      "refersTo": "option",
+      "description": "A choice in the chai builder; turmeric and pressed when chosen.",
+      "html": "<label class=\"ds-opt-wrap\"><input type=\"radio\" name=\"f\" checked class=\"ds-opt-in\"><span class=\"ds-opt\"><b>Masala</b><small>spiced</small></span></label><label class=\"ds-opt-wrap\"><input type=\"radio\" name=\"f\" class=\"ds-opt-in\"><span class=\"ds-opt\"><b>Rose</b><small>gulab</small></span></label>",
+      "css": ".ds-opt-wrap{display:inline-block;margin:4px}.ds-opt-in{position:absolute;opacity:0;width:1px;height:1px}.ds-opt{display:flex;flex-direction:column;gap:2px;min-width:110px;padding:.6rem .85rem;border-radius:11px;background:#5e1016;color:#fff6ea;box-shadow:inset 0 0 0 1.5px rgba(255,246,234,.22),inset 0 -2px 0 rgba(0,0,0,.25);cursor:pointer;font-family:'Anek Latin',Arial,sans-serif}.ds-opt b{font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.035em}.ds-opt small{font-size:.8rem;opacity:.8}.ds-opt:hover{box-shadow:inset 0 0 0 1.5px rgba(244,178,35,.75)}.ds-opt-in:checked+.ds-opt{background:#f4b223;color:#3a080c;transform:translateY(1px);box-shadow:inset 0 0 0 1.5px #8e1b22}.ds-opt-in:focus-visible+.ds-opt{outline:3px solid #fff6ea;outline-offset:2px}"
+    },
+    {
+      "name": "Rate Board",
+      "kind": "card",
+      "refersTo": "board-maroon",
+      "description": "A painted menu board: keyline, corner dots, title, spec, rows on dotted leaders.",
+      "html": "<article class=\"ds-board\"><i class=\"d tl\"></i><i class=\"d tr\"></i><i class=\"d bl\"></i><i class=\"d br\"></i><header><h3>Chai</h3><p class=\"price\">$4.50 / $6.50</p></header><p class=\"spec\">Hot or iced · Regular / Large</p><ul><li><b>Ginger</b> <em>adrak</em></li><li><b>Masala</b> <em>spiced</em></li><li><b>Saffron</b> <em>kesari</em></li></ul></article>",
+      "css": ".ds-board{position:relative;max-width:340px;padding:32px 26px 26px;border-radius:18px;background:#8e1b22;color:#fff6ea;box-shadow:0 2px 4px rgba(12,3,2,.35),0 22px 44px -14px rgba(12,3,2,.6);font-family:'Anek Latin',Arial,sans-serif}.ds-board::before{content:'';position:absolute;inset:9px;border:2px solid rgba(244,178,35,.8);border-radius:11px;pointer-events:none}.ds-board .d{position:absolute;width:7px;height:7px;border-radius:50%;background:rgba(244,178,35,.8)}.ds-board .tl{top:16px;left:16px}.ds-board .tr{top:16px;right:16px}.ds-board .bl{bottom:16px;left:16px}.ds-board .br{bottom:16px;right:16px}.ds-board header{display:flex;justify-content:space-between;align-items:flex-start}.ds-board h3{margin:0;font-family:Shrikhand,Georgia,serif;font-weight:400;font-size:2rem;line-height:1;text-shadow:.045em .055em 0 #f4b223}.ds-board .price{margin:0;font-stretch:75%;font-weight:800;font-size:1.35rem}.ds-board .spec{margin:.5rem 0 1rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}.ds-board ul{list-style:none;margin:0;padding:0}.ds-board li{padding:.6rem 0;border-top:1px solid rgba(255,246,234,.15)}.ds-board li:first-child{border-top:0}.ds-board b{font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.035em}.ds-board em{font-style:normal;font-size:.85rem;opacity:.75}"
+    },
+    {
+      "name": "Painted Heading",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Section headings: Shrikhand with the sign painter's shade, a short sentence with a period.",
+      "html": "<h2 class=\"ds-paint\">Tell me how you take it.</h2>",
+      "css": ".ds-paint{margin:0;font-family:Shrikhand,'Cooper Black',Georgia,serif;font-weight:400;font-size:clamp(2.7rem,8.6vw,5.4rem);line-height:.98;letter-spacing:-.005em;color:#fff6ea;text-shadow:.045em .055em 0 #f4b223;text-wrap:balance;background:#8e1b22;padding:24px}"
+    },
+    {
+      "name": "Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Wordmark, five links, the Call plate; tea-black once the page moves.",
+      "html": "<nav class=\"ds-nav\"><span class=\"wm\">Chaiwala <span>Shop</span></span><span class=\"links\"><a>Make my chai</a><a>Menu</a><a>Photos</a><a>About</a><a>Visit</a></span><a class=\"call\">(925) 465-6886</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;padding:0 24px;background:rgba(26,13,11,.95);font-family:'Anek Latin',Arial,sans-serif}.ds-nav .wm{font-family:Shrikhand,Georgia,serif;font-size:1.75rem;color:#fff6ea;text-shadow:.045em .055em 0 #8e1b22}.ds-nav .wm span{color:#f4b223;text-shadow:.045em .055em 0 #5e1016}.ds-nav .links{display:flex;gap:28px}.ds-nav .links a{color:rgba(255,246,234,.85);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.ds-nav .links a:hover{color:#f4b223}.ds-nav .call{padding:.6rem 1rem;border-radius:12px;background:#f4b223;color:#3a080c;font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Rate Board",
+    "overview": "The page is the stack of painted tin boards that hangs over every chai stall: the shop's own maroon, white letters with a turmeric shade, a keyline a brush width in from the edge, prices on dotted leaders. The boards hang over the real Concord room and over painted walls of maroon, turmeric and tea-black. One motion idea runs the page: things are hung, so they swing and settle.",
+    "keyCharacteristics": [
+      "Committed color: maroon carries the boards and about half the sections; turmeric is the second paint.",
+      "Painted display letters with a hard shade, condensed rate-board caps, plain body.",
+      "Real photos only, in frames sized to their resolution.",
+      "Swing-and-settle motion from a top pivot, driven by scroll or by entering view.",
+      "Phone first: a three-button board pinned to the bottom of the screen."
+    ],
+    "rules": [
+      {
+        "name": "The Two Paints Rule",
+        "body": "Every field is maroon, turmeric or tea-black, and every board is maroon, turmeric, enamel or tea. A board never sits on a field of its own color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Clay Stays in the Cup Rule",
+        "body": "Terracotta appears only in the drawn kullad and its spices; it is not an accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Painted Shade Rule",
+        "body": "Shrikhand always carries its shade: a hard text-shadow at 0.045em / 0.055em, no blur. It is never used as a box shadow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Heading Speaks Alone Rule",
+        "body": "No label above a heading. Specs and legends go under titles or label form groups.",
+        "section": "typography"
+      },
+      {
+        "name": "The Nothing Floats Rule",
+        "body": "Depth comes from hanging, not glass: no backdrop blur, no glow. Anything raised is hung on cords or nailed, and swings from its top edge.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do take every price from the screens over the counter and note anything new in CONFIRM.md.",
+      "Do keep the painted shade on Shrikhand and keep Shrikhand to headings, board titles and the wordmark.",
+      "Do hang new things: pivot from the top, spring in, settle (rotate 2.4deg to 0, stiffness 90, damping 6).",
+      "Do size photos to their source: only gm22 goes full bleed; Reel stills stay in 4:5 frames under 430px wide.",
+      "Do write in the owner's first person, short sentences, headings as sentences with a period."
+    ],
+    "donts": [
+      "Don't put a label above a heading.",
+      "Don't use AI imagery, stock, or the shop's AI marketing graphics as photos.",
+      "Don't add glass, glow, gradient text or a second accent color.",
+      "Don't drive a horizontal row with vertical scroll.",
+      "Don't imitate hardware (metal screws, bevels, embossing); the boards are paint."
+    ]
+  }
+}

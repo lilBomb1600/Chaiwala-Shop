@@ -1,33 +1,23 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
-import { MasonryGallery } from "@/components/gallery/MasonryGallery";
+import { PageHead } from "@/components/PageHead";
+import { Gallery } from "@/components/gallery/Gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery",
-  description: "A look inside Chaiwala Shop — our chai, our snacks, our space in Concord, CA.",
+  title: "Photos",
+  description: "Photos from Chaiwala Shop in Concord, CA: the counter, chai in clay kullads, Maggi, fries and more.",
 };
 
 export default function GalleryPage() {
   return (
-    <div className="bg-cream pb-24 pt-32 sm:pt-40">
-      <Container>
-        <Reveal className="mx-auto mb-14 max-w-xl text-center">
-          <span className="mb-3 inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-saffron">
-            <span className="h-px w-6 bg-saffron" />
-            Gallery
-            <span className="h-px w-6 bg-saffron" />
-          </span>
-          <h1 className="font-display text-4xl font-bold text-espresso sm:text-5xl">
-            A look inside the shop
-          </h1>
-          <p className="mt-4 text-balance text-lg text-espresso-light">
-            Every cup, every plate, every corner — this is Chaiwala Shop.
-          </p>
-        </Reveal>
-
-        <MasonryGallery />
-      </Container>
-    </div>
+    <>
+      <PageHead title="From my counter." tone="tea">
+        The room on Salvio St, and stills from the videos I post. Tap any photo to see it bigger.
+      </PageHead>
+      <section className="bg-tea pb-24">
+        <div className="mx-auto max-w-[1440px] px-4 md:px-6 lg:px-12">
+          <Gallery />
+        </div>
+      </section>
+    </>
   );
 }

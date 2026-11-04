@@ -1,31 +1,33 @@
+// The same answers the first site gave, in the owner's voice. Sources: the Google listing, the drinks board, Yelp.
 export const faqs = [
   {
-    question: "Do you offer vegetarian options?",
+    question: "Is everything vegetarian?",
+    answer: "Yes. Everything on my board is vegetarian, from the Maggi and sandwiches to the kullad pizza.",
+  },
+  {
+    question: "Can I change how my chai is made?",
     answer:
-      "Yes — the entire menu at Chaiwala Shop is vegetarian-friendly, from our Maggi and sandwiches to our Kullad pizzas and snacks.",
+      "Yes. I make every chai with 2% milk and one spoon of sugar. Ask for no sugar, or for soy, almond or oat milk for $1 more. A clay kullad is $1 more on any drink.",
   },
   {
     question: "Is there a kids' menu?",
-    answer:
-      "Yes, we have a kids' menu available. Ask our staff when you arrive and we'll walk you through it.",
+    answer: "Yes. Ask at the counter and we'll walk you through it.",
   },
   {
-    question: "Can I customize my chai?",
-    answer:
-      "Absolutely. Our masala chai is served mildly sweetened with one spoon of sugar by default — just ask if you'd like it unsweetened or with your own sweetener. Alternative milks (soy, almond, oat) are available for a $1 charge.",
+    question: "Can I order by phone?",
+    answer: "Yes. Call (925) 465-6886 and tell me what you'd like.",
   },
   {
     question: "Do you take reservations?",
     answer:
-      "We're a walk-in, order-at-the-counter chaiwala — no reservations needed. We do get cozy in the evenings, so come a little early if you want a table.",
+      "No. Order at the counter and grab a table. Evenings get cozy, so come a little early if you want a seat.",
   },
   {
-    question: "Do you offer takeout?",
-    answer: "Yes, everything on our menu is available for dine-in or takeout.",
+    question: "Can I take it to go?",
+    answer: "Yes. Everything on the menu is for here or to go.",
   },
   {
     question: "What are your hours?",
-    answer:
-      "We're open daily from 10:00 AM, closing at 9:00 PM Sunday through Thursday and 10:00 PM on Friday and Saturday.",
+    answer: "Every day from 10 AM. I close at 9 PM Sunday to Thursday and 10 PM on Friday and Saturday.",
   },
 ] as const;
