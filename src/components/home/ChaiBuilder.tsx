@@ -117,147 +117,151 @@ export function ChaiBuilder() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-12">
-          {/* the stage: sticks while you pick */}
-          <div className="sticky top-[4.25rem] z-10 self-start lg:top-24">
-            <div className="board board-tea overflow-hidden px-5 pb-2 pt-5 md:px-8 md:pt-8">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <div className="relative h-[1.08em] w-full overflow-hidden text-[2.3rem] sm:text-[2.9rem] lg:text-[3.6rem]">
-                    <AnimatePresence mode="popLayout" initial={false}>
-                      <motion.span
-                        key={flavor.id}
-                        className="paint absolute left-0 top-0 whitespace-nowrap text-enamel [--shade:var(--maroon)]"
-                        initial={reduce ? false : { y: "105%" }}
-                        animate={{ y: "0%" }}
-                        exit={{ y: "-105%" }}
-                        transition={{ type: "spring", stiffness: 420, damping: 24 }}
-                      >
-                        {flavor.name}
-                      </motion.span>
-                    </AnimatePresence>
+        <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-x-12 lg:gap-y-9">
+          {/* phones: the stage only sticks over the choices, so it has scrolled away before the ticket arrives. From lg
+              up this wrapper dissolves (contents) and the stage sticks beside both the choices and the ticket. */}
+          <div className="flex min-w-0 flex-col gap-6 lg:contents">
+            {/* the stage: sticks while you pick */}
+            <div className="sticky top-[4.25rem] z-10 w-full self-start lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:top-24">
+              <div className="board board-tea overflow-hidden px-5 pb-2 pt-5 md:px-8 md:pt-8">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="relative h-[1.08em] w-full overflow-hidden text-[2.3rem] sm:text-[2.9rem] lg:text-[3.6rem]">
+                      <AnimatePresence mode="popLayout" initial={false}>
+                        <motion.span
+                          key={flavor.id}
+                          className="paint absolute left-0 top-0 whitespace-nowrap text-enamel [--shade:var(--maroon)]"
+                          initial={reduce ? false : { y: "105%" }}
+                          animate={{ y: "0%" }}
+                          exit={{ y: "-105%" }}
+                          transition={{ type: "spring", stiffness: 420, damping: 24 }}
+                        >
+                          {flavor.name}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                    <p className="rate-wide mt-1.5 truncate text-[0.72rem] text-turmeric md:text-[0.8rem]">
+                      {flavor.aka} · {order.temp} · {order.size}
+                    </p>
                   </div>
-                  <p className="rate-wide mt-1.5 truncate text-[0.72rem] text-turmeric md:text-[0.8rem]">
-                    {flavor.aka} · {order.temp} · {order.size}
-                  </p>
+                  <div className="board board-turmeric shrink-0 !rounded-[12px] px-3.5 py-2.5 before:!inset-[5px] before:!rounded-[8px] md:px-5 md:py-3.5">
+                    <RollingPrice value={price} className="paint-flat text-[1.7rem] text-maroon-ink md:text-[2.4rem]" />
+                  </div>
                 </div>
-                <div className="board board-turmeric shrink-0 !rounded-[12px] px-3.5 py-2.5 before:!inset-[5px] before:!rounded-[8px] md:px-5 md:py-3.5">
-                  <RollingPrice value={price} className="paint-flat text-[1.7rem] text-maroon-ink md:text-[2.4rem]" />
-                </div>
+                <ChaiCup order={order} pourKey={pourKey} className="mx-auto mt-1 block h-[196px] w-auto sm:h-[250px] lg:h-[430px]" />
               </div>
-              <ChaiCup order={order} pourKey={pourKey} className="mx-auto mt-1 block h-[196px] w-auto sm:h-[250px] lg:h-[430px]" />
             </div>
-          </div>
 
-          {/* the choices */}
-          <form className="flex min-w-0 flex-col gap-7" onSubmit={(e) => e.preventDefault()}>
-            <Group legend="Flavor">
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-                {flavors.map((f) => (
-                  <Option
-                    key={f.id}
-                    name="flavor"
-                    value={f.id}
-                    checked={order.flavor === f.id}
-                    onChange={() => set("flavor", f.id)}
-                    label={f.name}
-                    sub={f.aka}
-                  />
-                ))}
-              </div>
-            </Group>
-
-            <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
-              <Group legend="Hot or iced">
-                <div className="grid grid-cols-2 gap-2">
-                  {temps.map((t) => (
-                    <Option key={t.id} name="temp" value={t.id} checked={order.temp === t.id} onChange={() => set("temp", t.id)} label={t.label} />
-                  ))}
-                </div>
-              </Group>
-              <Group legend="Size">
-                <div className="grid grid-cols-2 gap-2">
-                  {sizes.map((s) => (
+            {/* the choices */}
+            <form className="flex min-w-0 flex-col gap-7 lg:col-start-2 lg:row-start-1" onSubmit={(e) => e.preventDefault()}>
+              <Group legend="Flavor">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+                  {flavors.map((f) => (
                     <Option
-                      key={s.id}
-                      name="size"
-                      value={s.id}
-                      checked={order.size === s.id}
-                      onChange={() => set("size", s.id)}
-                      label={s.label}
-                      sub={`$${s.price.toFixed(2)}`}
+                      key={f.id}
+                      name="flavor"
+                      value={f.id}
+                      checked={order.flavor === f.id}
+                      onChange={() => set("flavor", f.id)}
+                      label={f.name}
+                      sub={f.aka}
                     />
                   ))}
                 </div>
               </Group>
+
+              <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
+                <Group legend="Hot or iced">
+                  <div className="grid grid-cols-2 gap-2">
+                    {temps.map((t) => (
+                      <Option key={t.id} name="temp" value={t.id} checked={order.temp === t.id} onChange={() => set("temp", t.id)} label={t.label} />
+                    ))}
+                  </div>
+                </Group>
+                <Group legend="Size">
+                  <div className="grid grid-cols-2 gap-2">
+                    {sizes.map((s) => (
+                      <Option
+                        key={s.id}
+                        name="size"
+                        value={s.id}
+                        checked={order.size === s.id}
+                        onChange={() => set("size", s.id)}
+                        label={s.label}
+                        sub={`$${s.price.toFixed(2)}`}
+                      />
+                    ))}
+                  </div>
+                </Group>
+              </div>
+
+              <Group legend="Cup">
+                <div className="grid grid-cols-2 gap-2">
+                  {cups.map((c) => (
+                    <Option
+                      key={c.id}
+                      name="cup"
+                      value={c.id}
+                      checked={order.cup === c.id}
+                      onChange={() => set("cup", c.id)}
+                      label={c.label}
+                      sub={c.extra ? "Clay cup, $1 more" : order.temp === "iced" ? "Clear cup" : "Paper cup"}
+                    />
+                  ))}
+                </div>
+              </Group>
+
+              <Group legend="Milk">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                  {milks.map((m) => (
+                    <Option
+                      key={m.id}
+                      name="milk"
+                      value={m.id}
+                      checked={order.milk === m.id}
+                      onChange={() => set("milk", m.id)}
+                      label={m.label}
+                      sub={m.extra ? "$1 more" : "How I make it"}
+                    />
+                  ))}
+                </div>
+              </Group>
+
+              <Group legend="Sugar" note="There's sugar on the counter if you like it sweeter.">
+                <div className="grid grid-cols-2 gap-2">
+                  {sugars.map((s) => (
+                    <Option
+                      key={s.id}
+                      name="sugar"
+                      value={s.id}
+                      checked={order.sugar === s.id}
+                      onChange={() => set("sugar", s.id)}
+                      label={s.label}
+                      sub={s.id === "one" ? "How I make it" : undefined}
+                    />
+                  ))}
+                </div>
+              </Group>
+            </form>
+          </div>
+
+          {/* the ticket */}
+          <div className="board board-turmeric min-w-0 px-6 pb-6 pt-7 md:px-8 md:pb-8 md:pt-9 lg:col-start-2 lg:row-start-2 lg:self-start">
+            <p className="paint-flat text-[1.55rem] leading-[1.15] text-maroon-ink md:text-[1.9rem]" aria-live="polite">
+              {line}
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <a href={business.phoneHref} className="plate plate-maroon">
+                <Phone size={17} strokeWidth={2.4} aria-hidden /> Call it in
+              </a>
+              <button type="button" onClick={copy} className="plate plate-enamel">
+                {copied ? <Check size={17} strokeWidth={2.6} aria-hidden /> : <Copy size={17} strokeWidth={2.4} aria-hidden />}
+                {copied ? "Copied" : "Copy my order"}
+              </button>
+              <span className="rate nums ml-auto text-[1.35rem] text-maroon-ink">${price.toFixed(2)}</span>
             </div>
-
-            <Group legend="Cup">
-              <div className="grid grid-cols-2 gap-2">
-                {cups.map((c) => (
-                  <Option
-                    key={c.id}
-                    name="cup"
-                    value={c.id}
-                    checked={order.cup === c.id}
-                    onChange={() => set("cup", c.id)}
-                    label={c.label}
-                    sub={c.extra ? "Clay cup, $1 more" : order.temp === "iced" ? "Clear cup" : "Paper cup"}
-                  />
-                ))}
-              </div>
-            </Group>
-
-            <Group legend="Milk">
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                {milks.map((m) => (
-                  <Option
-                    key={m.id}
-                    name="milk"
-                    value={m.id}
-                    checked={order.milk === m.id}
-                    onChange={() => set("milk", m.id)}
-                    label={m.label}
-                    sub={m.extra ? "$1 more" : "How I make it"}
-                  />
-                ))}
-              </div>
-            </Group>
-
-            <Group legend="Sugar" note="There's sugar on the counter if you like it sweeter.">
-              <div className="grid grid-cols-2 gap-2">
-                {sugars.map((s) => (
-                  <Option
-                    key={s.id}
-                    name="sugar"
-                    value={s.id}
-                    checked={order.sugar === s.id}
-                    onChange={() => set("sugar", s.id)}
-                    label={s.label}
-                    sub={s.id === "one" ? "How I make it" : undefined}
-                  />
-                ))}
-              </div>
-            </Group>
-
-            {/* the ticket */}
-            <div className="board board-turmeric mt-2 px-6 pb-6 pt-7 md:px-8 md:pb-8 md:pt-9">
-              <p className="paint-flat text-[1.55rem] leading-[1.15] text-maroon-ink md:text-[1.9rem]" aria-live="polite">
-                {line}
-              </p>
-              <div className="mt-5 flex flex-wrap items-center gap-3">
-                <a href={business.phoneHref} className="plate plate-maroon">
-                  <Phone size={17} strokeWidth={2.4} aria-hidden /> Call it in
-                </a>
-                <button type="button" onClick={copy} className="plate plate-enamel">
-                  {copied ? <Check size={17} strokeWidth={2.6} aria-hidden /> : <Copy size={17} strokeWidth={2.4} aria-hidden />}
-                  {copied ? "Copied" : "Copy my order"}
-                </button>
-                <span className="rate nums ml-auto text-[1.35rem] text-maroon-ink">${price.toFixed(2)}</span>
-              </div>
-              <p className="mt-4 text-[0.92rem] text-maroon-ink/80">Prices are from the board over my counter.</p>
-            </div>
-          </form>
+            <p className="mt-4 text-[0.92rem] text-maroon-ink/80">Prices are from the board over my counter.</p>
+          </div>
         </div>
       </div>
     </section>

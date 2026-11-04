@@ -9,7 +9,7 @@ WebP never wider than the source crop). `public/og.jpg` is the room photo at 120
 
 | Slot | Source | Source size | What it shows | Notes |
 |---|---|---|---|---|
-| room-wide | gm22 | 3330 x 2235 | The Concord counter, clay cups by the register, maroon chairs, the menu screens | Hero on desktop, gallery, about. The owner is behind the counter in his own post; never captioned. |
+| room-wide | gm22 | 3330 x 2235 | The Concord counter, clay cups by the register, maroon chairs, the menu screens | Hero on desktop, gallery, about. A man we take to be the owner is behind the counter (unconfirmed, see CONFIRM.md #12); never captioned. |
 | room-tall | gm22 | 3330 x 2235 | Same photo, 9:16 crop on the counter | Hero on phones |
 | room-chairs | gm22 | 3330 x 2235 | The chairs and round tables along the counter | Visit section, gallery |
 | chai-kullads | gm74 | 1080 x 1920 | Two chais in clay kullads | Reel still; caption burned in at the top was cropped off |

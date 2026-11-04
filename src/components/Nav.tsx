@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, Phone, X } from "lucide-react";
 import { business } from "@/data/business";
 import { cn } from "@/lib/utils";
@@ -26,6 +26,7 @@ export function Wordmark({ className }: { className?: string }) {
 
 export function Nav() {
   const pathname = usePathname();
+  const reduce = useReducedMotion();
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
   const [prev, setPrev] = useState(pathname);
@@ -108,17 +109,17 @@ export function Nav() {
           <motion.nav
             id="site-menu"
             aria-label="Menu"
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={{ clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            exit={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}
+            transition={reduce ? { duration: 0 } : { duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-maroon px-4 pb-10 pt-6 lg:hidden"
           >
             <ul className="flex flex-col gap-1">
               {links.map((l, i) => (
                 <motion.li
                   key={l.href}
-                  initial={{ opacity: 0, y: 14 }}
+                  initial={reduce ? false : { opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 + i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >

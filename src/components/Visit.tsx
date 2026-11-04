@@ -30,8 +30,8 @@ export function Visit({ headingLevel = 2, className }: { headingLevel?: 1 | 2; c
             Next to Todos Santos Plaza.
           </H>
           <p className="mt-5 max-w-[42ch] text-[1.12rem] leading-relaxed text-enamel/85">
-            {business.address.line1}, downtown Concord, by the movie theater and the Salvio St parking garage. Order at the
-            counter, sit down, or take it to the plaza.
+            {business.address.line1}, downtown Concord, by the movie theater and the parking garage. Order at the counter, sit
+            down, or take it to the plaza.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a href={business.directionsHref} target="_blank" rel="noopener" className="plate">
@@ -53,7 +53,8 @@ export function Visit({ headingLevel = 2, className }: { headingLevel?: 1 | 2; c
         </div>
 
         <div className="min-w-0 lg:pt-6">
-          <Hang index={1}>
+          {/* desktop: the hours ride along beside the photo instead of leaving a hole under them */}
+          <Hang index={1} className="lg:sticky lg:top-28">
             <Board tone="enamel" className="px-6 pb-8 pt-9 md:px-10 md:pb-10 md:pt-11">
               <h3 className="paint text-[2.4rem] leading-none text-maroon md:text-[3rem]">Hours</h3>
               <OpenLine className="rate mt-3 block text-[1rem] text-maroon-ink" />

@@ -35,7 +35,8 @@ before calling any of this final.
 8. **"Call it in."** The builder's order ticket links to the shop phone. The landscape board says "Order by Phone".
    Confirm phone orders are welcome.
 9. **The second names** (adrak, elaichi, strong, spiced, holy basil, kesari, gulab, betel leaf, saunf, with cocoa) are
-   our translations, not from the board. The cup colors and the spices drawn beside it are illustration.
+   our translations, not from the board. The cup colors and the spices drawn beside it are illustration. "Paper cup"
+   (hot) and "Clear cup" (iced) for the regular cup are read off the cups by the register in the room photo.
 10. **"There's sugar on the counter if you like it sweeter."** From two Yelp reviews. Still true?
 
 ## The shop
@@ -43,8 +44,9 @@ before calling any of this final.
 11. **Opening year.** The site says Concord opened in 2025 (from the old site). The logo says "Est. 2023". Is Concord a
     second shop? The shop's posters also list Fremont (41025 Fremont Blvd, (510) 570-3800) and Clovis; the site only
     talks about Concord.
-12. **The owner in the first picture.** The hero is his own Google photo of the counter, with him smiling behind the
-    register. Make sure he's happy leading with it.
+12. **The man in the first picture.** The hero is the shop's own Google photo of the counter, with a man smiling behind
+    the register. We assumed he's the owner; nothing says so. Confirm it's him (or a staff member who is fine with it)
+    and that he's happy leading with it. If not, the room crop can move off the register.
 13. **Instagram and Facebook links** (instagram.com/chaiwalashop, facebook.com/chaiwalashop) came from the first build
     and were never checked against the shop's real accounts.
 14. **Email** hello@chaiwalashop.com came from the first build and is on no board or listing. It's no longer shown.

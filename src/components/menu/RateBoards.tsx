@@ -73,9 +73,19 @@ function RateBoard({ board, tone, active }: { board: BoardT; tone: (typeof tones
   );
 }
 
-function FilterBar({ active, onChange, dark }: { active: Tag | "all"; onChange: (t: Tag | "all") => void; dark?: boolean }) {
+function FilterBar({
+  active,
+  onChange,
+  dark,
+  className,
+}: {
+  active: Tag | "all";
+  onChange: (t: Tag | "all") => void;
+  dark?: boolean;
+  className?: string;
+}) {
   return (
-    <div role="group" aria-label="Filter the menu" className="flex flex-wrap gap-2">
+    <div role="group" aria-label="Filter the menu" className={cn("flex gap-2", className ?? "flex-wrap")}>
       {filters.map((f) => {
         const on = active === f.id;
         return (
@@ -84,7 +94,7 @@ function FilterBar({ active, onChange, dark }: { active: Tag | "all"; onChange: 
             type="button"
             aria-pressed={on}
             onClick={() => onChange(f.id)}
-            className={cn("plate !min-h-[2.6rem] !px-4 !text-[0.95rem]", on ? "" : dark ? "plate-ghost" : "plate-maroon")}
+            className={cn("plate shrink-0 !min-h-[2.6rem] !px-4 !text-[0.95rem]", on ? "" : dark ? "plate-ghost" : "plate-maroon")}
           >
             {f.label}
           </button>
@@ -132,8 +142,14 @@ export function BoardWall() {
   const [active, setActive] = useState<Tag | "all">("all");
   return (
     <div>
-      <div className="sticky top-16 z-20 -mx-4 bg-tea/95 px-4 py-3 md:top-[4.5rem] md:-mx-6 md:px-6 lg:-mx-12 lg:px-12">
-        <FilterBar active={active} onChange={setActive} dark />
+      {/* phones: one row you swipe, so the pinned bar stays one plate tall */}
+      <div className="sticky top-16 z-20 -mx-4 bg-tea/95 py-3 sm:px-4 md:top-[4.5rem] md:-mx-6 md:px-6 lg:-mx-12 lg:px-12">
+        <FilterBar
+          active={active}
+          onChange={setActive}
+          dark
+          className="flex-nowrap overflow-x-auto overscroll-x-contain px-4 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+        />
       </div>
       <div className="mt-8 columns-1 gap-5 sm:columns-2 xl:columns-3 [&>*]:mb-5 [&>*]:break-inside-avoid">
         {boards.map((b, i) => (
