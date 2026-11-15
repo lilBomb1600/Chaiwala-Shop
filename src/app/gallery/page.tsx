@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { PageHead } from "@/components/PageHead";
 import { Gallery } from "@/components/gallery/Gallery";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Photos",
-  description: "Photos from Chaiwala Shop in Concord, CA: the counter, chai in clay kullads, Maggi, fries and more.",
-};
+  description:
+    "Photos from Chaiwala Shop in Concord, CA: the counter, chai in clay kullads, Maggi, fries and more.",
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

@@ -22,9 +22,10 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { ActionBar } from "@/components/ActionBar";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { business, siteUrl } from "@/data/business";
-import { averageRating, reviewCount } from "@/data/reviews";
-import { hhmm, week } from "@/lib/hours";
+import { JsonLd } from "@/components/JsonLd";
+import { business } from "@/data/business";
+import { siteJsonLd } from "@/lib/seo/jsonld";
+import { rootMetadata } from "@/lib/seo/metadata";
 
 // Shrikhand: a heavy display face drawn from Gujarati lettering; it paints like a desi shop sign.
 const paint = Shrikhand({ variable: "--font-shrikhand", subsets: ["latin"], weight: "400", display: "swap" });
@@ -33,13 +34,9 @@ const anek = Anek_Latin({ variable: "--font-anek", subsets: ["latin"], axes: ["w
 
 const title = `${business.name} | Authentic Chai & Snacks in Concord, CA`;
 
+// Base URL, robots (noindex while it's an unpaid preview), share card: src/lib/seo (LAUNCH-STANDARD.md).
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: title,
-    template: `%s | ${business.name}`,
-  },
-  description: business.description,
+  ...rootMetadata({ title, description: business.description }),
   keywords: [
     "chaiwala",
     "chai shop Concord",
@@ -48,60 +45,11 @@ export const metadata: Metadata = {
     "Indian snacks Concord CA",
     "vegetarian cafe Concord",
   ],
-  openGraph: {
-    title,
-    description: business.description,
-    url: siteUrl,
-    siteName: business.name,
-    locale: "en_US",
-    type: "website",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Inside Chaiwala Shop on Salvio St, Concord" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description: business.description,
-    images: ["/og.jpg"],
-  },
-  robots: { index: true, follow: true },
   formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {
   themeColor: "#1a0d0b",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CafeOrCoffeeShop",
-  name: business.name,
-  url: siteUrl,
-  image: `${siteUrl}/og.jpg`,
-  description: business.description,
-  telephone: business.phone,
-  priceRange: business.priceRange,
-  servesCuisine: "Indian",
-  hasMenu: `${siteUrl}/menu`,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: business.address.line1,
-    addressLocality: "Concord",
-    addressRegion: "CA",
-    postalCode: "94520",
-    addressCountry: "US",
-  },
-  openingHoursSpecification: week.map((d) => ({
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: d.day,
-    opens: hhmm(d.open),
-    closes: hhmm(d.close),
-  })),
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: averageRating,
-    reviewCount,
-  },
-  sameAs: [business.social.instagram, business.social.facebook],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -111,7 +59,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <JsonLd data={siteJsonLd()} />
         <SmoothScroll />
         <Nav />
         <main id="main-content" className="overflow-x-clip">

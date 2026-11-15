@@ -1,4 +1,6 @@
-export const siteUrl = "https://www.chaiwalashop.com";
+// The preview's own URL (canonical, og:url, JSON-LD). Not www.chaiwalashop.com: that is a different live site, and
+// whether the shop owns the domain is still open (CONFIRM.md #15). On launch set NEXT_PUBLIC_SITE_URL instead.
+export const siteUrl = "https://chaiwala-shop.vercel.app";
 
 export const business = {
   name: "Chaiwala Shop",

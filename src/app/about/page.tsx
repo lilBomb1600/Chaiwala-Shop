@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHead } from "@/components/PageHead";
@@ -8,11 +8,12 @@ import { Board, Stars } from "@/components/Paint";
 import { Faq } from "@/components/Faq";
 import { business } from "@/data/business";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
   description:
     "Chaiwala Shop is a chai cafe on Salvio St in downtown Concord, CA: ten chais, hot or iced, in a clay kullad if you like, and vegetarian desi street food.",
-};
+  path: "/about",
+});
 
 // word for word from the shop's Yelp reviews (src/data/reviews.ts)
 const notice = [

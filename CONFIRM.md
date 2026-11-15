@@ -52,7 +52,7 @@ before calling any of this final.
 14. **Email** hello@chaiwalashop.com came from the first build and is on no board or listing. It's no longer shown.
 15. **Online ordering and delivery.** The boards say "Delivery available" and "Order online", and the posters say
     "order online at www.chaiwalashop.com". The site has no order link. Ask for the link (and whether the shop owns
-    chaiwalashop.com; the site's canonical URL and sitemap already point there).
+    chaiwalashop.com. Until then the canonical, share tags and JSON-LD use chaiwala-shop.vercel.app, the preview is noindex, and the sitemap is empty).
 
 ## Removed
 

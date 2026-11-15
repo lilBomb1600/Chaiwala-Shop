@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { PageHead } from "@/components/PageHead";
@@ -7,11 +7,12 @@ import { VegMark } from "@/components/Paint";
 import { business } from "@/data/business";
 import { itemCount } from "@/data/menu";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Menu",
   description:
     "The Chaiwala Shop menu with prices: ten chais hot or iced, refreshers, coffee, shakes, Maggi, buns, sandwiches, pizza, kullad pizza, pasta and burgers. All vegetarian.",
-};
+  path: "/menu",
+});
 
 export default function MenuPage() {
   return (
